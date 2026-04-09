@@ -1,5 +1,11 @@
 #for data processing and analysis 
 
+# the goal of this project is to use a pH monitor to gather the data from a titration and anylyse it.
+
+```{python}
+# hudson's cell for data importing
+```
+
 ```{python}
 pip install matplotlib numpy
 ```
