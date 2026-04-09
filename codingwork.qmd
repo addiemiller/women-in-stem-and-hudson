@@ -4,6 +4,17 @@
 
 ```{python}
 # hudson's cell for data importing
+
+import serial
+import serial.tools.list_ports as list_ports
+for port in list_ports.comports():
+    portname = port[0]
+
+ser = serial.Serial(portname, 19200, timeout = 1)  # open serial port
+# print(ser.name)         # check which port was really used
+# ser.close()          
+```
+
 ```
 
 ```{python}
@@ -18,4 +29,9 @@ volume = np.array([0,5,10,25,27]) #ml
 ph_values = np.array([2,5,6,7,8,])
 # next I need to graph the data
 
+
+# slope coding
+slopes=np.gradient(volume, ph_values)
+max(slopes)
+print(max)
 ```
