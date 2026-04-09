@@ -1,7 +1,8 @@
 #for data processing and analysis 
 
 # the goal of this project is to use a pH monitor to gather the data from a titration and anylyse it.
-
+sources that Hudson Used: https://pythonhosted.org/pyserial/shortintro.html#listing-ports
+https://atlas-scientific.com/kits/ph-kit/
 ```{python}
 # hudson's cell for data importing
 
