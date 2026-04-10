@@ -1,6 +1,13 @@
 #for data processing and analysis 
 
-# the goal of this project is to use a pH monitor to gather the data from a titration and anylyse it.
+# the goal of this project is to use a pH monitor to gather the data from a titration and analyze it.
+
+Hudson is planning on setting up the code for the data collection from the pH monitor.
+
+Addie is planning on using the collected data from the titration device to create a graph. 
+
+Nya is planning on using the graph to determine equivalence point
+
 sources that Hudson Used: https://pythonhosted.org/pyserial/shortintro.html#listing-ports
 https://atlas-scientific.com/kits/ph-kit/
 ```{python}
@@ -18,9 +25,11 @@ ser = serial.Serial(portname, 19200, timeout = 1)  # open serial port
 
 ```
 # Resources that Addie is using for this code - https://plotivy.app/charts/titration-curve for learning how to make titration curve graphs
+
 ```{python}
 pip install matplotlib numpy
 ```
+
 ```{python}
 import matplotlib.pyplot as plt
 import numpy as np
@@ -33,6 +42,8 @@ ph_values = np.array([2,5,6,7,8,])
 
 # slope coding
 slopes=np.gradient(volume, ph_values)
-max(slopes)
-print(max)
+steep_slope = max(slopes)
+print(steep_slope)
 ```
+
+Sources that Nya used: https://saturncloud.io/blog/calculating-slopes-in-numpy-or-scipy/ for code to calculate slopes
