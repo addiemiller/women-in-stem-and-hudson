@@ -17,7 +17,7 @@ ser = serial.Serial(portname, 19200, timeout = 1)  # open serial port
 ```
 
 ```
-
+# Resources that Addie is using for this code - https://plotivy.app/charts/titration-curve for learning how to make titration curve graphs
 ```{python}
 pip install matplotlib numpy
 ```
