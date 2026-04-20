@@ -8,10 +8,13 @@ https://atlas-scientific.com/kits/ph-kit/
 
 import serial
 import serial.tools.list_ports as list_ports
-for port in list_ports.comports():
-    portname = port[0]
 
-ser = serial.Serial(portname, 19200, timeout = 1)  # open serial port
+ports = list(list_ports.comports())
+#for port in list_ports.comports():
+    #portname = port[0]
+for p in ports:
+    print(p.device, p.description)
+#ser = serial.Serial(portname, 19200, timeout = 1)  # open serial port
 # print(ser.name)         # check which port was really used
 # ser.close()          
 ```
