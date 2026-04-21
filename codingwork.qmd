@@ -6,17 +6,27 @@ https://atlas-scientific.com/kits/ph-kit/
 ```{python}
 # hudson's cell for data importing
 
-import serial
-import serial.tools.list_ports as list_ports
+#import serial
+# import serial.tools.list_ports as list_ports
 
-ports = list(list_ports.comports())
+
+
+#ports = list(list_ports.comports())
 #for port in list_ports.comports():
     #portname = port[0]
-for p in ports:
-    print(p.device, p.description)
+#for p in ports:
+#    print(p.device, p.description)
 #ser = serial.Serial(portname, 19200, timeout = 1)  # open serial port
 # print(ser.name)         # check which port was really used
 # ser.close()          
+```
+
+```{python}
+import csv
+with open('titration.csv', 'w') as csvfile:
+    pHimput = csv.writer(csvfile)
+pHwriter.writerow({'pH':})
+
 ```
 
 ```
