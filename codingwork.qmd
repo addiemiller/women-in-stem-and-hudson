@@ -66,9 +66,39 @@ plt.plot(volume,ph_values)
 
 #display the titration plot
 plt.show()
+```
 
+
+```{python}
+df = pd.read_csv('titration.csv')
+```
+
+```{python}
+
+pip install scipy.stats
+from scipy.stats import linregress
+
+import pandas as pd
+
+data = {'pH1': [2, 2.5, 3.2, 4, 5, 7.8, 8.5, 9],
+        'volume1': [10, 20, 30, 40, 50, 60, 70, 80]}
+df1 = pd.DataFrame(data)
+
+
+def:(df['volume1'], df['pH1'])
+
+df['slope_column'] = slope
+
+print(df)
+```
+
+```{python}
 # slope coding
 slopes=np.gradient(volume, ph_values)
 max(slopes)
 print(max)
 ```
+
+Resorces that Nya uses:
+https://saturncloud.io/blog/calculating-slopes-in-numpy-or-scipy/ for code to calculate slopes
+https://www.geeksforgeeks.org/python/find-maximum-values-position-in-columns-and-rows-of-a-dataframe-in-pandas/
