@@ -94,22 +94,53 @@ plt.show()
 
 ```{python}
 
-pip install scipy.stats
-from scipy.stats import linregress
-
-import pandas as pd
-
+#Sample Data
 data = {'pH1': [2, 2.5, 3.2, 4, 5, 7.8, 8.5, 9],
-        'volume1': [10, 20, 30, 40, 50, 60, 70, 80]}
-df1 = pd.DataFrame(data)
+        'volume1': [1, 2, 3, 4, 5, 6, 7, 8]}
+df = pd.DataFrame(data)
+
+#define a function to calculate slope
+def calculate_slopes(x, y):
+   
+    x = np.array(x, dtype=float)
+    y = np.array(y, dtype=float)
+    
+    if x.shape != y.shape:
+        raise ValueError("x and y must have the same length.")
+
+    dx = np.diff(x)
+    dy = np.diff(y)
+
+    return dy/dx
+    
+    
+#use the function on the data
+slopes = calculate_slopes(df['volume1'], df['pH1'])
+
+#make a new data frame with an extra row so that the number of items in new slope column is the same as in the orininal columns - make this new row the same as the last one so that it is not accidentally identified as having the biggest difference between data points
+
+new_row = df.tail(1)
+new_df = pd.concat([df, new_row], ignore_index=True)
+
+#make a new column for slopes between data points
+df['slope_column'] = calculate_slopes(new_df['volume1'], new_df['pH1'])
+
+#find the biggest slope
+max_index = df['slope_column'].idxmax()
+
+# Get the 'x' values corresponding to the rows that the biggest slope is between
+x_value = df.loc[max_index, 'volume1']
+next_index = max_index + 1
+next_x = df.loc[next_index, 'volume1']
 
 
-def:(df['volume1'], df['pH1'])
 
-df['slope_column'] = slope
+# this will give the volume in between the points that have the steepest difference. This should be close to where the equivalence point is.
+equiv_volume = (x_value + next_x)/2
+print("The equivalence point is", equiv_volume)
 
-print(df)
 ```
+
 
 ```{python}
 # slope coding
