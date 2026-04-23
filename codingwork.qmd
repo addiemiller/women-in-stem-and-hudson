@@ -49,6 +49,7 @@ with open('titration.csv', 'w', newline='') as csvfile:
             continue
         if pH < 0 or pH > 14:
             print('invalid pH. please insert a number between 0 and 14')
+            continue
         writer.writerow({'volume':volume, 'pH': pH})
 
 ```
