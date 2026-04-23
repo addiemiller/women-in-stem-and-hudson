@@ -37,21 +37,32 @@ pHwriter.writerow({'pH':})
 ```{python}
 pip install matplotlib numpy
 ```
+
+```{python}
+pip install pandas
+```
 ```{python}
 import matplotlib.pyplot as plt
 import numpy as np
+```
 
-# prepare the data
-x=[1,2,3,4]
-y=[2,4,6,8]
+```{python}
+import pandas as pd 
+```
+
+```{python}
+
+data = {'pH': [2,2.2,2.5,3,7,9,10.2,10.8,11,11.2,11.3], 'volume' : [1,2,3,4,5,6,7,8,9,10,11]}
+
+df2 = pd.DataFrame(data)
 
 #create graph
-plt.plot(x,y)
+plt.plot('pH','volume')
 
 # add lables and title
-plt.title("Sample line Graph")
-plt.xlable("X-Axis Label")
-plt.ylable("Y-Axis Label")
+plt.title("Titration")
+plt.xlable("pH values")
+plt.ylable("Volume ml")
 
 # Display the plot
 plt.show()
