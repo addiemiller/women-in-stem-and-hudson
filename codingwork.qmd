@@ -1,6 +1,6 @@
 #for data processing and analysis 
 
-# the goal of this project is to use a pH monitor to gather the data from a titration and anylyse it.
+# the goal of this project is to use the data from a titration and analyze it.
 sources that Hudson Used: https://pythonhosted.org/pyserial/shortintro.html#listing-ports
 https://atlas-scientific.com/kits/ph-kit/
 ```{python}
@@ -91,12 +91,18 @@ plt.ylable("Volume ml")
 plt.show()
 ```
 
+```{python}
+print(pd.read_csv('titration.csv'))
+```
+
 
 ```{python}
 
-#Sample Data for trial runs of code
-#data = {'pH1': [2, 2.5, 3.2, 4, 5, 7.8, 8.5, 9],
-#        'volume1': [1, 2, 3, 4, 5, 6, 7, 8]}
+#CODE FOR FINDING THE EQUIVALENCE POINT VOLUME
+
+#Sample data for trial runs of code
+#data = {'pH': [2, 2.5, 3.2, 4, 5, 7.8, 8.5, 9],
+#        'volume': [1, 2, 3, 4, 5, 6, 7, 8]}
 #df = pd.DataFrame(data)
 
 df = pd.read_csv('titration.csv')
@@ -127,7 +133,7 @@ new_df = pd.concat([df, new_row], ignore_index=True)
 #make a new column for slopes between data points
 df['slope_column'] = calculate_slopes(new_df['volume'], new_df['pH'])
 
-#find the biggest slope
+#find index of the biggest slope
 max_index = df['slope_column'].idxmax()
 
 # Get the 'x' values corresponding to the rows that the biggest slope is between
@@ -154,3 +160,6 @@ print(max)
 Resorces that Nya uses:
 https://saturncloud.io/blog/calculating-slopes-in-numpy-or-scipy/ for code to calculate slopes
 https://www.geeksforgeeks.org/python/find-maximum-values-position-in-columns-and-rows-of-a-dataframe-in-pandas/
+https://www.iditect.com/faq/python/create-new-columns-and-fill-with-calculated-values-from-same-dataframe-in-python.html - calculating new columns
+https://www.geeksforgeeks.org/pandas/how-to-add-one-row-in-an-existing-pandas-dataframe/ - to add a row
+https://www.geeksforgeeks.org/python/get-last-n-records-of-a-pandas-dataframe/ - for replicating the last row in a data frame
