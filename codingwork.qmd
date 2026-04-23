@@ -94,10 +94,12 @@ plt.show()
 
 ```{python}
 
-#Sample Data
-data = {'pH1': [2, 2.5, 3.2, 4, 5, 7.8, 8.5, 9],
-        'volume1': [1, 2, 3, 4, 5, 6, 7, 8]}
-df = pd.DataFrame(data)
+#Sample Data for trial runs of code
+#data = {'pH1': [2, 2.5, 3.2, 4, 5, 7.8, 8.5, 9],
+#        'volume1': [1, 2, 3, 4, 5, 6, 7, 8]}
+#df = pd.DataFrame(data)
+
+df = pd.read_csv('titration.csv')
 
 #define a function to calculate slope
 def calculate_slopes(x, y):
@@ -115,7 +117,7 @@ def calculate_slopes(x, y):
     
     
 #use the function on the data
-slopes = calculate_slopes(df['volume1'], df['pH1'])
+slopes = calculate_slopes(df['volume'], df['pH'])
 
 #make a new data frame with an extra row so that the number of items in new slope column is the same as in the orininal columns - make this new row the same as the last one so that it is not accidentally identified as having the biggest difference between data points
 
@@ -123,15 +125,15 @@ new_row = df.tail(1)
 new_df = pd.concat([df, new_row], ignore_index=True)
 
 #make a new column for slopes between data points
-df['slope_column'] = calculate_slopes(new_df['volume1'], new_df['pH1'])
+df['slope_column'] = calculate_slopes(new_df['volume'], new_df['pH'])
 
 #find the biggest slope
 max_index = df['slope_column'].idxmax()
 
 # Get the 'x' values corresponding to the rows that the biggest slope is between
-x_value = df.loc[max_index, 'volume1']
+x_value = df.loc[max_index, 'volume']
 next_index = max_index + 1
-next_x = df.loc[next_index, 'volume1']
+next_x = df.loc[next_index, 'volume']
 
 
 
