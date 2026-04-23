@@ -22,10 +22,34 @@ https://atlas-scientific.com/kits/ph-kit/
 ```
 
 ```{python}
+
+# this section if for writing the csv file
 import csv
-with open('titration.csv', 'w') as csvfile:
-    pHimput = csv.writer(csvfile)
-pHwriter.writerow({'pH':})
+
+with open('titration.csv', 'w', newline='') as csvfile:
+    fieldnames = ['volume', 'pH']
+    writer = csv.DictWriter(csvfile, fieldnames = fieldnames)   
+    writer.writeheader()
+
+# this should be the loop for entering data
+    while True:
+        volume = input('Please enter the volume of the base that has been added to the titration or enter the "done" if the titration is complete')
+        
+        if volume.lower() == 'done':
+            break
+        pH = input('Now enter the pH')
+
+        # this code makes sure that the enteries are actual numbers
+
+        try:
+            volume = float(volume)
+            pH = float(pH)
+        except ValueError:
+            print('please only enter numbers, this data point will not be recorded')
+            continue
+        if pH < 0 or pH > 14:
+            print('invalid pH. please insert a number between 0 and 14')
+        writer.writerow({'volume':volume, 'pH': pH})
 
 ```
 
