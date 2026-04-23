@@ -69,9 +69,6 @@ pip install pandas
 ```{python}
 import matplotlib.pyplot as plt
 import numpy as np
-```
-
-```{python}
 import pandas as pd 
 ```
 
@@ -85,7 +82,7 @@ print(df["volume"])
 print(df["pH"])
 
 #create graph
-plt.plot(df['volume'], df['pH'], color='y', marker='o', linestyle='--')
+plt.plot(df['volume'], df['pH'], color='y', marker='o', linestyle='-')
 
 # add lables and title
 print("labels applied")
