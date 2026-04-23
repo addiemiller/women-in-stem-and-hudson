@@ -76,16 +76,23 @@ import pandas as pd
 ```
 
 ```{python}
-
+#set the data frame
 df = pd.read_csv('titration.csv')
 
+#check and make sure the data is in the csv file
+print(df.head())
+print(df["volume"])
+print(df["pH"])
+
 #create graph
-plt.plot(df['Volume'], df['pH'], color='b', lable= 'Titration Curve')
+plt.plot(df['volume'], df['pH'], color='y', marker='o', linestyle='--')
 
 # add lables and title
+print("labels applied")
+
 plt.title("Titration")
-plt.xlable("pH values")
-plt.ylable("Volume ml")
+plt.xlabel("pH values")
+plt.ylabel("Volume ml")
 
 # Display the plot
 plt.show()
