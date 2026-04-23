@@ -77,12 +77,10 @@ import pandas as pd
 
 ```{python}
 
-data = {'pH': [2,2.2,2.5,3,7,9,10.2,10.8,11,11.2,11.3], 'volume' : [1,2,3,4,5,6,7,8,9,10,11]}
-
-df2 = pd.DataFrame(data)
+df = pd.read_csv('titration.csv')
 
 #create graph
-plt.plot('pH','volume')
+plt.plot(df['Volume'], df['pH'], color='b', lable= 'Titration Curve')
 
 # add lables and title
 plt.title("Titration")
@@ -91,23 +89,8 @@ plt.ylable("Volume ml")
 
 # Display the plot
 plt.show()
-
-
-# sample titration data
-volume=np.array([0,5,10,25,27]) #ml
-ph_values=np.array([2,5,6,7,8,])
-
-# next I need to graph the data
-plt.plot(volume,ph_values)
-
-#display the titration plot
-plt.show()
 ```
 
-
-```{python}
-df = pd.read_csv('titration.csv')
-```
 
 ```{python}
 
