@@ -105,6 +105,7 @@ print(pd.read_csv('titration.csv'))
 #        'volume': [1, 2, 3, 4, 5, 6, 7, 8]}
 #df = pd.DataFrame(data)
 
+#Define the data frame based on a csv file. Make sure the volume is in mL.
 df = pd.read_csv('titration.csv')
 
 #define a function to calculate slope
@@ -145,7 +146,26 @@ next_x = df.loc[next_index, 'volume']
 
 # this will give the volume in between the points that have the steepest difference. This should be close to where the equivalence point is.
 equiv_volume = (x_value + next_x)/2
-print("The equivalence point is", equiv_volume)
+print("The equivalence point volume is", equiv_volume, "mL")
+
+#enter the concentration (in M) of base solution here.
+#Example concentration: 0.05 M
+base_conc = 0.05
+
+#enter the volume (in mL) of acid used in the titration
+acid_vol = 60
+
+#Calculate the moles of base added at the equivalence point
+equiv_mol = base_conc*equiv_volume/1000
+print("The number of moles at the equivalence point is", equiv_mol, "mol")
+
+#calculate the 1/2 equivalence point.
+half_equiv = equiv_mol/2
+print("The 1/2 equivalence point is", half_equiv, "mol")
+
+#Calculate the concentration of acid
+acid_conc = equiv_mol/(acid_vol/1000)
+print("The concentration of acid is", acid_conc, "M")
 
 ```
 
