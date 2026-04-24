@@ -95,9 +95,7 @@ plt.ylabel("Volume ml")
 plt.show()
 ```
 
-```{python}
-print(pd.read_csv('titration.csv'))
-```
+
 
 
 ```{python}
@@ -174,12 +172,6 @@ print("The concentration of acid is", acid_conc, "M")
 ```
 
 
-```{python}
-# slope coding
-slopes=np.gradient(volume, ph_values)
-max(slopes)
-print(max)
-```
 
 Resorces that Nya uses:
 https://saturncloud.io/blog/calculating-slopes-in-numpy-or-scipy/ for code to calculate slopes
