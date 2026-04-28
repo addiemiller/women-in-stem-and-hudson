@@ -1,10 +1,14 @@
 #for data processing and analysis 
 
 # the goal of this project is to use the data from a titration and analyze it.
-sources that Hudson Used: https://pythonhosted.org/pyserial/shortintro.html#listing-ports
+sources that Hudson Used: 
+https://pythonhosted.org/pyserial/shortintro.html#listing-ports
 https://atlas-scientific.com/kits/ph-kit/
+https://docs.python.org/3/library/index.html
+https://docs.python.org/3/library/csv.html
+https://docs.python.org/3/library/itertools.html
 ```{python}
-# hudson's cell for data importing
+# hudson's code for using the pH meter, but it is not fully working yet.
 
 #import serial
 # import serial.tools.list_ports as list_ports
@@ -23,7 +27,7 @@ https://atlas-scientific.com/kits/ph-kit/
 
 ```{python}
 
-# this section if for writing the csv file
+# this section if for writing the csv file for recording the pH data.
 import csv
 
 with open('titration.csv', 'w', newline='') as csvfile:
@@ -31,7 +35,7 @@ with open('titration.csv', 'w', newline='') as csvfile:
     writer = csv.DictWriter(csvfile, fieldnames = fieldnames)   
     writer.writeheader()
 
-# this should be the loop for entering data
+# this is the loop for entering data
     while True:
         volume = input('Please enter the volume of the base that has been added to the titration or enter the "done" if the titration is complete')
         
@@ -39,7 +43,7 @@ with open('titration.csv', 'w', newline='') as csvfile:
             break
         pH = input('Now enter the pH')
 
-        # this code makes sure that the enteries are actual numbers
+        # this code makes sure that the enteries are actual numbers and that the pH is between 0 and 14.
 
         try:
             volume = float(volume)
