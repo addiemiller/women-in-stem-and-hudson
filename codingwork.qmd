@@ -101,12 +101,7 @@ plt.show()
 
 ```{python}
 
-#CODE FOR FINDING THE EQUIVALENCE POINT VOLUME
-
-#Sample data for trial runs of code
-#data = {'pH': [2, 2.5, 3.2, 4, 5, 7.8, 8.5, 9],
-#        'volume': [1, 2, 3, 4, 5, 6, 7, 8]}
-#df = pd.DataFrame(data)
+#THIS CODE BLOCK IS FOR FINDING THE EQUIVALENCE POINT, 1/2 EQUIVALENCE POINT, AND THE CONCENTRATION OF ACID.
 
 #Define the data frame based on a csv file. Make sure the volume is in mL.
 df = pd.read_csv('titration.csv')
@@ -125,29 +120,23 @@ def calculate_slopes(x, y):
 
     return dy/dx
     
-    
-#use the function on the data
-slopes = calculate_slopes(df['volume'], df['pH'])
 
-#make a new data frame with an extra row so that the number of items in new slope column is the same as in the orininal columns - make this new row the same as the last one so that it is not accidentally identified as having the biggest difference between data points
+#The below code uses the funtion on the titration data. A new column with slope values is calculated and the volumes corresponding to the biggest slope is identified.
 
+#This code make a new data frame with an extra row so that the number of items in new slope column is the same as in the orininal columns. 
 new_row = df.tail(1)
 new_df = pd.concat([df, new_row], ignore_index=True)
 
-#make a new column for slopes between data points
+#make a new column
 df['slope_column'] = calculate_slopes(new_df['volume'], new_df['pH'])
 
-#find index of the biggest slope
+#find index and volumes corresponding to the biggest slope
 max_index = df['slope_column'].idxmax()
-
-# Get the 'x' values corresponding to the rows that the biggest slope is between
 x_value = df.loc[max_index, 'volume']
 next_index = max_index + 1
 next_x = df.loc[next_index, 'volume']
 
-
-
-# this will give the volume in between the points that have the steepest difference. This should be close to where the equivalence point is.
+# The average between the volumes giving the biggest slope is calculated. This should be close to where the equivalence point is.
 equiv_volume = (x_value + next_x)/2
 print("The equivalence point volume is", equiv_volume, "mL")
 
